@@ -15,3 +15,11 @@ socket.on("newMessage", function(message) {
     console.log("newMessage", message);
 });
 
+socket.emit("createMessage", {
+
+    from: "Frank",
+    text: "No! I am you father."
+}, function(data) {
+
+    console.log("Got it!", data)
+});

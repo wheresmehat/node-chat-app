@@ -29,13 +29,6 @@ io.on("connection", (socket) => {
 
          callback("This is from the server.");
 
-        /*socket.broadcast.emit("newMessage", {
-
-            from: message.from,
-            text: message.text,
-            createdAt: new Date().getTime()
-        });*/
-
     });
 
     socket.on("disconnect", () => {

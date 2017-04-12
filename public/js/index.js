@@ -48,12 +48,11 @@ jQuery(function() {
 
             from: "User",
             text: $messageInput.val()
-        }, function(data) {
+        }, function() {
 
-            console.log("jQuery test", data)
+            $messageInput.val("");
         });
-
-        $messageInput.val("");
+  
     });
 
 
@@ -66,7 +65,11 @@ jQuery(function() {
             return alert("Geolocation not supported by your browser.");
         }
 
+        $locationButton.prop("disabled", true).text("Sending location...");
+
         navigator.geolocation.getCurrentPosition(function(position) {
+
+            $locationButton.prop("disabled", false).text("Send location");
 
             socket.emit("createLocationMessage", {
 
@@ -76,6 +79,7 @@ jQuery(function() {
 
         }, function() {
 
+            $locationButton.prop("disabled", false).text("Send location");
             alert("Unable to fetch location.");
         });
 
